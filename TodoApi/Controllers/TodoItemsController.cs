@@ -9,7 +9,7 @@ using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[TodoItems]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -92,7 +92,7 @@ namespace TodoApi.Controllers
             _context.TodoItems.Add(toDoItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetToDoItem", new { id = toDoItem.Id }, toDoItem);
+            return CreatedAtAction(nameof(GetToDoItem), new { id = toDoItem.Id }, toDoItem);
         }
 
         // DELETE: api/TodoItems/5
@@ -121,3 +121,8 @@ namespace TodoApi.Controllers
         }
     }
 }
+
+
+// Prevent over-posting 
+// &&
+// Call the API with JS
